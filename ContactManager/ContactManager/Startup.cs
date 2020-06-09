@@ -10,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using ContactManager.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContactManager
 {
@@ -26,7 +27,9 @@ namespace ContactManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddScoped<ListService>();
+
+            services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());});
 
             var connection = @"Server = (localdb)\mssqllocaldb; Database = ContactManager; Trusted_Connection = True; ConnectRetryCount = 0";
             services.AddDbContext<ContactManagerContext>(options => options.UseSqlServer(connection));

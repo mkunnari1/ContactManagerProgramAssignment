@@ -6,24 +6,14 @@
 
 @foreach(var contact in Model.Contacts)
 {
-    @contact.Name
+    <div class="card col-4 align-content-center">
+        <div class="card-header">@contact.Id</div>
+        <div class="card-body"> @contact.Name</div>
+        <div class="card-body"> @contact.Company</div>
+        <div class="card-body"> @contact.PhoneNumber</div>
+        <div class="card-body"> @contact.Email</div> 
+    </div>
+   
 }
 
-
-
-@*<form asp-action="Index" asp-controller="Contact">
-        <label asp-for="Id"></label>
-        <input asp-for="Id" placeholder="Id # here" />
-        <label asp-for="Company"></label>
-        <input asp-for="Company" placeholder="Company affiliation here" />
-        <label asp-for="Name"></label>
-        <input asp-for="Name" placeholder="Full Name Here" />
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber" placeholder="xxx-xxx-xxxx" />
-        <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Example@gmail.com" />
-        <input type="submit" />
-        <input name="_RequestVerificationToken" type="hidden" value="<token_generated_here>" />
-
-    </form>*@
 

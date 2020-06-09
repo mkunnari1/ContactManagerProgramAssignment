@@ -1,0 +1,25 @@
+﻿@model ContactManager.ViewModels.ListView
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach(var column in Model.Columns)
+        {
+        <div class="col-2 m2">
+            <h3>@column.Title</h3>
+
+            @foreach (var card in column.Cards)
+            {
+                <div class="card">
+                    <div class="card-body">@card.Content</div>
+                </div>
+            }
+        </div>
+            
+        }
+    </div>
+</div>
