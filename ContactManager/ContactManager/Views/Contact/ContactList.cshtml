@@ -1,0 +1,20 @@
+﻿@model ContactManager.Models.ContactList
+@{
+    ViewData["Title"] = "ContactList";
+}
+
+<h1>ContactList</h1>
+
+@foreach ( var contact in Model.Contacts){
+<div class="card">
+    <div class="card-header">
+        @contact.Name
+    </div>
+    <div class="card-body">Company: @contact.Name</div>
+    <div class="card-body">ID: @contact.Name</div>
+    <div class="card-body">Phone: @contact.Name</div>
+    <div class="card-body">Email: @contact.Name</div>
+
+</div>
+    
+}

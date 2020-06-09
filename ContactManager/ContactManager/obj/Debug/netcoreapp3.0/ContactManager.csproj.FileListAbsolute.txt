@@ -125,3 +125,6 @@ C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\Co
 C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\ContactManager.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\Razor\Views\Contact\CreateContact.cshtml.g.cs
 C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\Razor\Views\Contact\ViewContact.cshtml.g.cs
+C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_ContactInfo.cshtml.g.cs
+C:\Users\HP\OneDrive\Documents\ContactManagerProgramAssignment\ContactManager\ContactManager\obj\Debug\netcoreapp3.0\Razor\Views\Contact\ContactList.cshtml.g.cs

@@ -20,15 +20,7 @@ namespace ContactManager.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult ViewContact()
-        {
-            return View();
-        }
-        public IActionResult CreateContact()
-        {
+           
             return View();
         }
 
