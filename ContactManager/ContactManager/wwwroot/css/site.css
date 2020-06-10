@@ -69,3 +69,12 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Input Validation Error Styles*/
+input[type=text].input-validation-error{
+    border-bottom:1px solid #f00;
+    
+}
+input[type=tel].input-validation-error {
+    border-bottom: 1px solid #f00;
+}

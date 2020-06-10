@@ -1,0 +1,35 @@
+﻿@model ContactManager.Models.ContactList.Contact
+@{
+    ViewData["Title"] = "DeleteContact";
+}
+
+<h1>Delete Contact?</h1>
+
+<form asp-controller="Contact" asp-action="DeleteContact">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label for="id">ID</label>
+        <input type="number" asp-for="Id" class="form-control" id="id" readonly>
+    </div>
+    <div class="form-group">
+        <label for="company">Company Name</label>
+        <input type="text" asp-for="Company" class="form-control" id="company" placeholder="Enter company name" readonly>
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Enter name" readonly>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" asp-for="PhoneNumber" class="form-control" id="phone" placeholder="xxx-xxx-xxxx" readonly>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Example@email.com" readonly>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Contact" asp-action="Index" class="btn btn-info">Back to List</a>
+
+</form>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager.ViewModels
 {
-    public class NewContact
+    public class EditContact
     {
         public int Id { get; set; }
         [Required]

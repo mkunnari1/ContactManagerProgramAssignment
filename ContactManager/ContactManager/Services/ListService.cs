@@ -34,19 +34,6 @@ namespace ContactManager.Services
             return list;
         }
 
-        public ListView viewList()
-        {
-            var model = new ListView();
-            var column = new ListView.Column { Title = "Contact" };
-
-
-            var card = new ListView.Card { Content = "Here is a contact card" };
-
-
-            column.Cards.Add(card);
-            model.Columns.Add(column);
-            return model;
-        }
 
         public void AddContact(NewContact viewModel)
         {
@@ -59,6 +46,57 @@ namespace ContactManager.Services
 
             });
 
+            dbContext.SaveChanges();
+        }
+
+        public EditContact GetEdit(int id)
+        {
+            var contact = dbContext.Contacts.SingleOrDefault(x => x.Id == id);
+            if (contact == null)
+            {
+                return new EditContact();
+            }
+            return new EditContact
+            {
+                Id = contact.Id,
+                Company = contact.Company,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber,
+                Email = contact.Email
+            };
+        }
+
+        public void Update(EditContact contactEdit)
+        {
+            var contact = dbContext.Contacts.SingleOrDefault(x => x.Id == contactEdit.Id);
+                contact.Company = contactEdit.Company;
+                contact.Name = contactEdit.Name;
+                contact.PhoneNumber = contactEdit.PhoneNumber;
+                contact.Email = contactEdit.Email;
+
+                dbContext.SaveChanges();
+        }
+
+        public ContactList.Contact GetDelete(int id)
+        {
+            var contact = dbContext.Contacts.SingleOrDefault(x => x.Id == id);
+            if (contact == null)
+            {
+                return new ContactList.Contact();
+            }
+            return new ContactList.Contact
+            {
+                Id = contact.Id,
+                Company = contact.Company,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber,
+                Email = contact.Email
+            };
+        }
+
+        public void Delete(ContactList.Contact contactDelete)
+        {
+            dbContext.Contacts.Remove(contactDelete);
             dbContext.SaveChanges();
         }
     }

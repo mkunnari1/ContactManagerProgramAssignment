@@ -38,13 +38,53 @@ namespace ContactManager.Controllers
         [HttpPost]
         public IActionResult CreateContact(NewContact viewModel)
         {
-            listService.AddContact(viewModel);
-            return RedirectToAction(nameof(Success));
+            if (ModelState.IsValid)
+            {
+                listService.AddContact(viewModel);
+                return RedirectToAction(nameof(Success));
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult EditContact(int id)
+        {
+            EditContact viewModel = listService.GetEdit(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult EditContact(EditContact contactEdit)
+        {
+            listService.Update(contactEdit);
+            TempData["Message"] = "Contact Update Successful";
+            return RedirectToAction(nameof(EditContact), new { id = contactEdit.Id });
+        }
+
+       [HttpGet]
+       public IActionResult DeleteContact(int id)
+        {
+            ContactList.Contact viewModel = listService.GetDelete(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteContact(ContactList.Contact contactDelete)
+        {
+            listService.Delete(contactDelete);
+            return RedirectToAction(nameof(DeleteSuccess));
+        }
+
+        public IActionResult DeleteSuccess()
+        {
+            return View();
         }
 
         public IActionResult Success()
         {
             return View();
         }
+
     }
 }
