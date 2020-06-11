@@ -7,6 +7,7 @@ using ContactManager.Models;
 using ContactManager.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using ContactManager.Services;
+using ContactManager.Infrastructure;
 
 namespace ContactManager.Controllers
 {
@@ -21,19 +22,41 @@ namespace ContactManager.Controllers
         }
        
         //gets list of contacts from the db displays on page
-        [HttpGet]
+        
         public IActionResult Index()
         {
             ContactList list = listService.ListContacts();
 
             return View(list);
         }
-        //takes you to form for creating new contact
+
         [HttpGet]
-        public IActionResult CreateContact()
+        public IActionResult Index(string searchContact)
         {
-            return View();
+            if(searchContact == null)
+            {
+                ContactList allContacts = listService.ListContacts();
+
+                return View(allContacts);
+            }
+            ViewData["GetContacts"] = searchContact;
+            ContactList list = listService.ListContacts(searchContact);
+
+            return View(list);
         }
+
+        //[HttpGet]
+        //public IActionResult SearchContact(string searchTerm)
+        //{
+        //    SearchContactList list = listService.contactSearch(searchTerm);
+        //    return View(list);
+        //}
+        ////takes you to form for creating new contact
+        //[HttpGet]
+        //public IActionResult CreateContact()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public IActionResult CreateContact(NewContact viewModel)

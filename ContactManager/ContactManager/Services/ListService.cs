@@ -33,7 +33,25 @@ namespace ContactManager.Services
             }
             return list;
         }
-
+        public ContactList ListContacts(string searchContacts)
+        {
+            int incomingSearch;
+            int.TryParse(searchContacts, out incomingSearch);
+            var list = new ContactList();
+            foreach (var contact in dbContext.Contacts.Where(x => x.Company.Contains(searchContacts)
+            || x.Name.Contains(searchContacts) || x.Email.Contains(searchContacts) || x.Id == incomingSearch))
+            {
+                list.Contacts.Add(new ContactList.Contact
+                {
+                    Id = contact.Id,
+                    Name = contact.Name,
+                    Company = contact.Company,
+                    Email = contact.Email,
+                    PhoneNumber = contact.PhoneNumber
+                });
+            }
+            return list;
+        }
 
         public void AddContact(NewContact viewModel)
         {

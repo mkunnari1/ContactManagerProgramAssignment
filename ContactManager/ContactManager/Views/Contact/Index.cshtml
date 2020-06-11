@@ -3,7 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<form method="get"  asp-controller="Contact" asp-action="Index">
+    <p>
+        <input type="search" placeholder="Enter Contact ID Company Name or Email" value="@ViewData["GetContacts"]" name="searchContact" style="width: 500px" />
+        <input type="submit" value="search" class="btn btn-primary"/>
+        
+    </p>
+</form>
 @foreach(var contact in Model.Contacts)
 {
     <div class="card col-4 align-content-center">
