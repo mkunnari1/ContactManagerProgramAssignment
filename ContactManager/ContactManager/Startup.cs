@@ -33,6 +33,9 @@ namespace ContactManager
 
             var connection = @"Server = (localdb)\mssqllocaldb; Database = ContactManager; Trusted_Connection = True; ConnectRetryCount = 0";
             services.AddDbContext<ContactManagerContext>(options => options.UseSqlServer(connection));
+
+            var connect = @"Server = (localdb)\mssqllocaldb; Database = ContactManagerTestDB; Trusted_Connection = True; ConnectRetryCount = 0";
+            services.AddDbContext<ContactManagerTestContext>(options => options.UseSqlServer(connect));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

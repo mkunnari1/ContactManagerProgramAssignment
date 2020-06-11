@@ -17,6 +17,7 @@ namespace ContactManager.Services
         {
             this.dbContext = dbContext;
         }
+        //list all contacts
         public ContactList ListContacts()
         {
             var list = new ContactList();
@@ -33,13 +34,13 @@ namespace ContactManager.Services
             }
             return list;
         }
+        //return list of contacts containing or matching search string
         public ContactList ListContacts(string searchContacts)
         {
-            int incomingSearch;
-            int.TryParse(searchContacts, out incomingSearch);
+           
             var list = new ContactList();
             foreach (var contact in dbContext.Contacts.Where(x => x.Company.Contains(searchContacts)
-            || x.Name.Contains(searchContacts) || x.Email.Contains(searchContacts) || x.Id == incomingSearch))
+            || x.Name.Contains(searchContacts) || x.Email.Contains(searchContacts) || x.Id.ToString().Contains(searchContacts) ))
             {
                 list.Contacts.Add(new ContactList.Contact
                 {
@@ -67,6 +68,7 @@ namespace ContactManager.Services
             dbContext.SaveChanges();
         }
 
+        //Functions to edit contact first delivers contact to the view for editing, second saves edits to DB
         public EditContact GetEdit(int id)
         {
             var contact = dbContext.Contacts.SingleOrDefault(x => x.Id == id);
@@ -95,6 +97,7 @@ namespace ContactManager.Services
                 dbContext.SaveChanges();
         }
 
+        //Functions to delete contact first delivers contact to the view for delete verification, second removes contact from DB
         public ContactList.Contact GetDelete(int id)
         {
             var contact = dbContext.Contacts.SingleOrDefault(x => x.Id == id);

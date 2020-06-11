@@ -5,25 +5,34 @@
 }
 <form method="get"  asp-controller="Contact" asp-action="Index">
     <p>
-        <input type="search" placeholder="Enter Contact ID Company Name or Email" value="@ViewData["GetContacts"]" name="searchContact" style="width: 500px" />
+        <input type="search" placeholder="Enter Contact ID Company Name or Email" value="@ViewData["GetContacts"]"
+               name="searchContact" class="col-4 offset-3" />
         <input type="submit" value="search" class="btn btn-primary"/>
         
     </p>
 </form>
-@foreach(var contact in Model.Contacts)
-{
-    <div class="card col-4 align-content-center">
-        <div class="card-header"> ID: @contact.Id</div>
-        <div class="card-body">Company: @contact.Company</div>
-        <div class="card-body">Name:  @contact.Name</div>
-        <div class="card-body">Phone Number: @contact.PhoneNumber</div>
-        <div class="card-body">Email: @contact.Email</div>
-        <div class="card-footer">
-            <a asp-controller="Contact" asp-action="EditContact" asp-route-id="@contact.Id" class="btn btn-info">Edit</a>
-            <a asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@contact.Id" class="btn btn-danger">Delete</a>
+<div class="row">
+    @foreach (var contact in Model.Contacts)
+    {
+
+        <div class="col-sm-4">
+            <div class="card" style="margin-bottom:20px;">
+                <div class="card-header"> ID: @contact.Id</div>
+                <div class="card-body">Company: @contact.Company</div>
+                <div class="card-body">Name:  @contact.Name</div>
+                <div class="card-body">Phone Number: @contact.PhoneNumber</div>
+                <div class="card-body">Email: @contact.Email</div>
+                <div class="card-footer">
+                    <a asp-controller="Contact" asp-action="EditContact" asp-route-id="@contact.Id" class="btn btn-info">Edit</a>
+                    <a asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@contact.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
         </div>
-    </div>
-   
-}
+
+
+
+    }
+</div>
+
 
 

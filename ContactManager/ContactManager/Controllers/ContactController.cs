@@ -11,7 +11,7 @@ using ContactManager.Infrastructure;
 
 namespace ContactManager.Controllers
 {
-    
+    //Methods for Controllers are inside Services.ListService
     public class ContactController : Controller
     {
         private readonly ListService listService;
@@ -20,15 +20,8 @@ namespace ContactManager.Controllers
         {
             this.listService = listService;
         }
-       
-        //gets list of contacts from the db displays on page
-        
-        public IActionResult Index()
-        {
-            ContactList list = listService.ListContacts();
 
-            return View(list);
-        }
+        //gets list of contacts from the db displays on page also manages search funtionality
 
         [HttpGet]
         public IActionResult Index(string searchContact)
@@ -45,18 +38,13 @@ namespace ContactManager.Controllers
             return View(list);
         }
 
-        //[HttpGet]
-        //public IActionResult SearchContact(string searchTerm)
-        //{
-        //    SearchContactList list = listService.contactSearch(searchTerm);
-        //    return View(list);
-        //}
-        ////takes you to form for creating new contact
-        //[HttpGet]
-        //public IActionResult CreateContact()
-        //{
-        //    return View();
-        //}
+        
+        //Create new Contact store in DB Redirects to success view after.
+        [HttpGet]
+        public IActionResult CreateContact()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult CreateContact(NewContact viewModel)
@@ -69,7 +57,7 @@ namespace ContactManager.Controllers
 
             return View(viewModel);
         }
-
+        //Edit Contact, after edit is successful gives success message on view through TempData
         [HttpGet]
         public IActionResult EditContact(int id)
         {
@@ -84,7 +72,7 @@ namespace ContactManager.Controllers
             TempData["Message"] = "Contact Update Successful";
             return RedirectToAction(nameof(EditContact), new { id = contactEdit.Id });
         }
-
+        //Deletes Contact from DB and redirects to delete success view
        [HttpGet]
        public IActionResult DeleteContact(int id)
         {
@@ -98,7 +86,7 @@ namespace ContactManager.Controllers
             listService.Delete(contactDelete);
             return RedirectToAction(nameof(DeleteSuccess));
         }
-
+        
         public IActionResult DeleteSuccess()
         {
             return View();
