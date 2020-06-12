@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ContactManager.Models;
 using ContactManager.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using ContactManager.Services;
-using ContactManager.Infrastructure;
 
 namespace ContactManager.Controllers
 {
@@ -87,6 +81,7 @@ namespace ContactManager.Controllers
             return RedirectToAction(nameof(DeleteSuccess));
         }
         
+        //Views for Successful Delete and Create
         public IActionResult DeleteSuccess()
         {
             return View();

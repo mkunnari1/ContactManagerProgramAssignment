@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ContactManager.Models;
 using ContactManager.ViewModels;
-using Microsoft.EntityFrameworkCore;
 using ContactManager.Infrastructure;
 
 namespace ContactManager.Services
