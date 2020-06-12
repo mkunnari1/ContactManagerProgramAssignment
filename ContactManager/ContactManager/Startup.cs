@@ -31,7 +31,7 @@ namespace ContactManager
 
             services.AddControllersWithViews(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());});
 
-            var connection = @"Server = (localdb)\mssqllocaldb; Database = ContactManager; Trusted_Connection = True; ConnectRetryCount = 0";
+            var connection = @"Server = (localdb)\mssqllocaldb; Database = /*/*YOURDBNAMEHERE!!!*/*/; Trusted_Connection = True; ConnectRetryCount = 0";
             services.AddDbContext<ContactManagerContext>(options => options.UseSqlServer(connection));
 
         }
