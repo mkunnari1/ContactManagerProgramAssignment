@@ -1,6 +1,6 @@
 # ContactManagerProgramAssignment
 
-###Introduction
+<h3>Introduction</h3>
 
 This program acts as a contact management system with full CRUD capabilites and a search feature.  I wanted to keep the controllers slimmed down and simple to understand so you will find almost all of the logic inside of the listServices file in the services folder, it's all labeled.  View models were used for almost every view so that customization is easier for future developers, I find this design makes it easier to change views later and allows for deeper customization options without having to created bloated models.  Entity Framework Core was used and I used a local Db for storage, instructions on how to duplicate this setup are listed below in the setup section.  There is minimal styling done and most of it is through the use of bootstrap 4 classes.  Enjoy! I am open to any suggestions or improvements and if I made a mistake somewhere please point it out.
 
